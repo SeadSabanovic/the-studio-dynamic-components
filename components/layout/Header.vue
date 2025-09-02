@@ -3,7 +3,7 @@ import { navigationItems } from "~/constants/navigation";
 </script>
 
 <template>
-  <header class="text-white">
+  <header class="text-white z-50 relative">
     <div id="discount-banner" class="bg-[#2d2d2d]">
       <BaseContainer class="flex justify-evenly items-center text-xs h-9">
         <a
