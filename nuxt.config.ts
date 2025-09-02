@@ -68,7 +68,6 @@ export default defineNuxtConfig({
   // Vercel specific configuration
   nitro: {
     // Enable static generation for Vercel compatibility
-    static: true,
     // Configure for Vercel deployment
     preset: "vercel",
     // Ensure proper function handling
