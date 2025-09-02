@@ -36,31 +36,31 @@ export default defineNuxtConfig({
     },
   },
   modules: ["@nuxtjs/tailwindcss", "nuxt-icons", "@nuxt/image"],
-  // ISR Configuration - Vercel compatible
+  // swr Configuration - Vercel compatible
   // Note: prerender routes removed for Vercel compatibility
-  // ISR will still work via routeRules
-  // Route Rules for ISR
+  // swr will still work via routeRules
+  // Route Rules for swr
   routeRules: {
     "/api/products-template": {
-      isr: 3600, // Revalidate every hour
+      swr: true,
     },
     "/api/hero-template": {
-      isr: 3600,
+      swr: true,
     },
     "/api/template": {
-      isr: 3600,
+      swr: true,
     },
     "/products": {
-      isr: 3600,
+      swr: true,
     },
     "/hero": {
-      isr: 3600,
+      swr: true,
     },
     "/": {
-      isr: 3600,
+      swr: true,
     },
   },
-  // Vercel ISR Configuration
+  // Vercel swr Configuration
   experimental: {
     payloadExtraction: false,
   },
@@ -70,6 +70,6 @@ export default defineNuxtConfig({
     // Enable static generation for Vercel compatibility
     static: true,
     // Removed preset: 'vercel' to avoid symlink issues
-    // ISR will work via routeRules
+    // swr will work via routeRules
   },
 });
