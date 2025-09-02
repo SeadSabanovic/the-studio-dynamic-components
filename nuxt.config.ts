@@ -70,10 +70,10 @@ export default defineNuxtConfig({
     // Enable static generation for Vercel compatibility
     static: true,
     // Configure for Vercel deployment
-    preset: 'vercel',
+    preset: "vercel",
     // Ensure proper function handling
     experimental: {
-      wasm: true
-    }
+      wasm: true,
+    },
   },
 });
