@@ -68,7 +68,7 @@ export default defineNuxtConfig({
   // Vercel specific configuration
   nitro: {
     // Enable static generation for Vercel compatibility
-    static: true,
+    // static: true,
     // Removed preset: 'vercel' to avoid symlink issues
     // swr will work via routeRules
   },
