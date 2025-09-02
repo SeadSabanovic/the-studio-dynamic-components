@@ -1,21 +1,30 @@
 <template>
   <div>
-    <DynamicTemplate :template="apiData.template" :props="apiData.props" />
+    <!-- Render all components from API -->
+    <DynamicTemplate
+      v-for="(component, index) in apiData.components"
+      :key="index"
+      :template="component.template"
+      :props="component.props"
+    />
   </div>
 </template>
 
 <script setup>
-// Fetch template data from API
+// Fetch components data from API
 const { data: apiData } = await useFetch("/api/hero-template", {
   default: () => ({
-    template:
-      '<Hero :title="props.title" :content="props.content" :image="props.image" />',
-    props: {
-      title: "Hero Page - Dynamic Component",
-      content:
-        "This is a dynamic Hero component rendered from API template string on the hero page.",
-      image: "/images/hero01.jpeg",
-    },
+    components: [
+      {
+        template:
+          '<Hero :title="props.title" :content="props.content" :image="props.image" :buttons="props.buttons" />',
+        props: {
+          title: "Fallback Hero Title",
+          content: "Fallback Hero Content",
+          image: "/images/hero02.jpeg",
+        },
+      },
+    ],
   }),
 });
 </script>

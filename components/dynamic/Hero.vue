@@ -23,13 +23,13 @@
             @click="handleButtonClick(button)"
             :aria-label="button.text"
           >
+            {{ button.text }}
             <nuxt-icon
               v-if="button.icon"
               :name="button.icon"
               class="text-lg"
               filled
             />
-            {{ button.text }}
           </BaseButton>
         </div>
       </div>
@@ -84,10 +84,7 @@ defineProps({
 
 // Handle button click with navigation
 const handleButtonClick = (button) => {
-  console.log("🔘 Button clicked in Hero component:", button);
-
   if (button.link) {
-    console.log(`Navigating to: ${button.link}`);
     navigateTo(button.link);
   } else {
     console.warn("No link provided for button:", button);

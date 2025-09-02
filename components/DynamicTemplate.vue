@@ -5,8 +5,8 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import Hero from "./Hero.vue";
+import Hero from "./dynamic/Hero.vue";
+import Products from "./dynamic/Products.vue";
 
 const props = defineProps({
   template: {
@@ -26,6 +26,11 @@ const renderedComponent = computed(() => {
     return Hero;
   }
 
+  if (props.template.includes("Products")) {
+    // Return Products component directly
+    return Products;
+  }
+
   // Return a fallback component with helpful message
   return {
     template: `
@@ -42,6 +47,13 @@ const componentProps = computed(() => {
       content: props.props.content,
       image: props.props.image,
       buttons: props.props.buttons,
+    };
+  }
+
+  if (props.template.includes("Products")) {
+    return {
+      title: props.props.title,
+      products: props.props.products,
     };
   }
 

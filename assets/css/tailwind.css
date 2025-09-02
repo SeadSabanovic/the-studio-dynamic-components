@@ -18,6 +18,7 @@
   h5,
   h6 {
     font-family: "Figtree", sans-serif;
+    font-weight: 400;
   }
 
   .font-display {
@@ -36,5 +37,5 @@
 
 /* Typography */
 h1 {
-  @apply text-[40px] leading-[1.1] xl:text-[51px] font-normal;
+  @apply text-[40px] leading-[1.1] xl:text-[51px];
 }

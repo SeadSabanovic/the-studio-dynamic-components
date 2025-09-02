@@ -1,21 +1,25 @@
 export default defineEventHandler(async () => {
-  // Return different Vue template string with Hero component for hero page
+  // Return array of components with their templates and props
   return {
-    template:
-      '<Hero :title="props.title" :content="props.content" :image="props.image" :metadata="props.metadata" />',
-    props: {
-      title: "Hero Component",
-      content:
-        "This is a dynamic Hero component rendered from API template string. It demonstrates how Vue template strings can be fetched from API and rendered dynamically with custom props.",
-      image: "/images/hero02.jpeg",
-      buttons: [
-        {
-          id: "back-to-home",
-          text: "Back to Home",
-          link: "/",
-          icon: "HugeiconsArrowTurnBackward",
+    components: [
+      {
+        template:
+          '<Hero :title="props.title" :content="props.content" :image="props.image" :buttons="props.buttons" />',
+        props: {
+          title: "Hero Component",
+          content:
+            "Manufacture inspiring custom products with low MOQs, talented designers, and amazing factories in one platform.",
+          image: "/images/hero02.jpeg",
+          buttons: [
+            {
+              id: "back-to-home",
+              text: "Back to Home",
+              link: "/",
+              icon: "HugeiconsArrowTurnBackward",
+            },
+          ],
         },
-      ],
-    },
+      },
+    ],
   };
 });

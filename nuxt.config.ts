@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "THE/STUDIO - Dynamic Components",
+      htmlAttrs: {
+        lang: "en",
+      },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -14,33 +17,59 @@ export default defineNuxtConfig({
         },
         { name: "theme-color", content: "#2d5d9f" },
       ],
+      // Optimized Google Fonts - only what we need
+      link: [
+        {
+          rel: "preconnect",
+          href: "https://fonts.googleapis.com",
+        },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Figtree:wght@400&family=Montserrat:wght@400;500;600&display=swap",
+        },
+      ],
     },
   },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/fonts", "nuxt-icons", "@nuxt/image"],
-  fonts: {
-    families: [
-      {
-        name: "Figtree",
-        weights: [400, 500, 600, 700],
-      },
-      {
-        name: "Montserrat",
-        weights: [400, 500, 600, 700],
-      },
-    ],
-    defaults: {
-      weights: [400, 500, 600, 700],
-      subsets: ["latin"],
+  modules: ["@nuxtjs/tailwindcss", "nuxt-icons", "@nuxt/image"],
+  // ISR Configuration - Vercel compatible
+  // Note: prerender routes removed for Vercel compatibility
+  // ISR will still work via routeRules
+  // Route Rules for ISR
+  routeRules: {
+    "/api/products-template": {
+      isr: 3600, // Revalidate every hour
     },
-  },
-  // ISR Configuration
-  nitro: {
-    prerender: {
-      routes: ["/api/template", "/api/hero-template"],
+    "/api/hero-template": {
+      isr: 3600,
+    },
+    "/api/template": {
+      isr: 3600,
+    },
+    "/products": {
+      isr: 3600,
+    },
+    "/hero": {
+      isr: 3600,
+    },
+    "/": {
+      isr: 3600,
     },
   },
   // Vercel ISR Configuration
   experimental: {
     payloadExtraction: false,
+  },
+
+  // Vercel specific configuration
+  nitro: {
+    // Enable static generation for Vercel compatibility
+    static: true,
+    // Removed preset: 'vercel' to avoid symlink issues
+    // ISR will work via routeRules
   },
 });
