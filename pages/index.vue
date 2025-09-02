@@ -17,4 +17,6 @@ const { data: apiData } = await useFetch("/api/template", {
     },
   }),
 });
+
+console.log(apiData.value);
 </script>
