@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
-          content: "THE/STUDIO - Sead Sabanovic",
+          content: "THE/STUDIO - Sead Sabanovicc",
         },
         { name: "theme-color", content: "#2d5d9f" },
       ],
